@@ -20,7 +20,7 @@ export class CategoriaEditComponent implements OnInit {
     if(environment.token == "")
     {
       alert("Sua sessão expirou")
-      this.router.navigate(["/entrar"])
+      this.router.navigate(["/login"])
     }
     let id = this.route.snapshot.params['id'];
     this.findByIdCategoria(id);
