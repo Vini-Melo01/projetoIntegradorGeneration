@@ -5,6 +5,7 @@ import { CategoriaService } from './../service/categoria.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment.prod';
+import { AlertasService } from '../service/alertas.service';
 
 @Component({
   selector: 'app-home',
@@ -22,13 +23,14 @@ export class HomeComponent implements OnInit {
   constructor(
     private router: Router,
     private categoriaService: CategoriaService,
-    private produtoService: ProdutoService
+    private produtoService: ProdutoService,
+    private alertas: AlertasService
   ) { }
 
   ngOnInit(){
     if(environment.token == "")
     {
-      alert("Sua sessão expirou");
+      this.alertas.showAlertDanger("Sua sessão expirou");
       this.router.navigate(["/login"]);
     }
     
